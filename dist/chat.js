@@ -51,7 +51,7 @@ const showChatContainerOnClick = (e) => {
 buttonSend.addEventListener("click", sendMessage);
 buttonShow.addEventListener("click", showChatContainerOnClick);
 
-message.addEventListener("keypress", (e) => {
+message.addEventListener("input", (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
     sendMessage(e);
