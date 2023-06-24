@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="output.css" />
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap');
+ </style>
+  <title>E-Learning ChatRoom</title>
+  <style>
+    @import url("https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css");
+  </style>
+</head>
+<body class="bg-indigo-400 min-h-screen flex flex-col justify-center items-center font-lato">
+  <div class="mt-5">
+    <form id="username-container" class="flex flex-col justify-center w-full max-w-xs mx-auto border p-5 rounded bg-white">
+      <div>
+        <h3 class="text-3xl text-center text-indigo-500 uppercase p-5">Join Us!</h3>
+        <img src="https://cdn.dribbble.com/users/2155177/screenshots/14219981/media/9f037bf6271282e8a190c9ac97aac83a.png?compress=1&resize=400x300&vertical=center" alt="chat"/>
+      </div>
+      <input type="text" id="username" placeholder="Write your nickname..." class="border-b border-indigo-500 outline-none bg-transparent p-3 focus:border-blue-500 text-gray-500" />
+      <button type="button" id="button-show" class="bg-indigo-500 rounded-md text-center text-blue-50 my-5 p-2 w-full mx-auto">JOIN CHATROOM</button>
+    </form>
+  </div>
+
+  <div id="chat-container" class="mt-5 hidden w-full">
+    <form class="flex flex-col justify-center w-full max-w-md mx-auto border p-2 rounded bg-white">
+      <div id="userOnline" class="text-left font-bold text-lime-400 ml-1 my-2"></div>
+      <div id="chat-win" class="border p-3 bg-black w-full rounded-md">
+        <div id="output" class="h-80 overflow-auto"></div>
+        <div id="actions"></div>  
+      </div>
+      <div class="flex my-2">
+        <input type="text" id="message" placeholder="Write your message..." class="border-b border-indigo-500 outline-none bg-transparent p-3 focus:border-blue-500  text-gray-500 flex-grow" />
+        <button type="button" id="button-send" class="bg-indigo-500 rounded-md text-center uppercase text-blue-50 my-5 p-2 rounded-full">Send</button>
+      </div>
+    </form>
+    
+  </div>
+  <script src="/socket.io/socket.io.js" charset="UTF-8"></script>
+  <script src="chat.js" charset="UTF-8"></script>
+</body>
+</html>
+
