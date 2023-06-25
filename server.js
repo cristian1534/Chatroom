@@ -15,12 +15,24 @@ const SocketIO = require("socket.io");
 const io = SocketIO(server);
 
 io.on("connection", (socket) => {
-  console.log("connection");
+  let username;
+
   socket.on("message", (data) => {
+    username = data.username;
     io.sockets.emit("message", data);
+  });
+
+  socket.on("joined", (data) => {
+    socket.broadcast.emit("joined", data);
   });
 
   socket.on("typing", (data) => {
     socket.broadcast.emit("typing", data);
+  });
+
+  socket.on("disconnect", () => {
+    if (typeof username !== "undefined") {
+      io.sockets.emit("userDisconnected", username);
+    }
   });
 });

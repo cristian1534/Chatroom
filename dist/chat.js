@@ -11,6 +11,8 @@ let actions = document.getElementById("actions");
 const usernameContainer = document.getElementById("username-container");
 const chatContainer = document.getElementById("chat-container");
 
+let hasJoined = false; // Variable para controlar si el evento "joined" se ha ejecutado
+
 const showChatContainer = (e) => {
   e.preventDefault();
   usernameContainer.classList.add("hidden");
@@ -28,7 +30,7 @@ const showChatContainerOnEnter = (e) => {
 };
 
 const showUserOnline = () => {
-  userOnline.innerHTML = `<span class="bg-black rounded-full p-2">Online</span>`
+  userOnline.innerHTML = `<span class="bg-black rounded-full p-2">Online</span>`;
 };
 showUserOnline();
 username.addEventListener("input", showUserOnline);
@@ -39,6 +41,10 @@ const sendMessage = (e) => {
     message: message.value,
     username: username.value,
   });
+  if (!hasJoined) {
+    socket.emit("joined", { username: username.value });
+    hasJoined = true;
+  }
   message.value = "";
 };
 
@@ -69,12 +75,19 @@ socket.on("message", (data) => {
   let messageAlignment =
     data.username === username.value ? "table" : "table ml-auto";
   output.innerHTML += `<p class="${messageClass}"><span class="${messageAlignment}">${data.username}: ${data.message}</span></p>`;
-
   output.scrollTop = output.scrollHeight;
 });
 
+socket.on("joined", (data) => {
+  actions.innerHTML += `<p class="text-yellow-500">${data.username} welcome to our chat!...</p>`;
+});
+
+socket.on("userDisconnected", (username) => {
+  actions.innerHTML += `<p class="text-red-500">${username} has left...</p>`;
+});
+
 socket.on("typing", (data) => {
-  actions.innerHTML = `<p class="text-cyan-500">${data.username} is typing a message</p>`;
+  actions.innerHTML = `<p class="text-cyan-500">${data.username} is typing...</p>`;
 });
 
 document.addEventListener("keydown", showChatContainerOnEnter);
