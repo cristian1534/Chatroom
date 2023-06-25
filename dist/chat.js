@@ -79,7 +79,7 @@ socket.on("message", (data) => {
 });
 
 socket.on("joined", (data) => {
-  actions.innerHTML += `<p class="text-yellow-500">${data.username} welcome to our chat!...</p>`;
+  actions.innerHTML += `<p class="text-yellow-500">${data.username} has joined our chat!...</p>`;
 });
 
 socket.on("userDisconnected", (username) => {
