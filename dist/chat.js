@@ -30,7 +30,7 @@ const showChatContainerOnEnter = (e) => {
 };
 
 const showUserOnline = () => {
-  userOnline.innerHTML = `<span class="bg-black rounded-full p-2">Online</span>`;
+  userOnline.innerHTML = `<span class="bg-slate-900 rounded-full p-2">Online</span>`;
 };
 showUserOnline();
 username.addEventListener("input", showUserOnline);
