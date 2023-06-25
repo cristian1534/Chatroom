@@ -13,10 +13,12 @@ const server = app.listen(PORT, () => {
 
 const SocketIO = require("socket.io");
 const io = SocketIO(server);
+let username;
+let count = 0;
 
 io.on("connection", (socket) => {
-  let username;
-
+  count++;
+  io.emit("count", count);
   socket.on("message", (data) => {
     username = data.username;
     io.sockets.emit("message", data);
@@ -31,6 +33,8 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", () => {
+    count--;
+    io.emit("count", count);
     if (typeof username !== "undefined") {
       io.sockets.emit("userDisconnected", username);
     }

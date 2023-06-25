@@ -7,6 +7,7 @@ let buttonShow = document.getElementById("button-show");
 let userOnline = document.getElementById("userOnline");
 let output = document.getElementById("output");
 let actions = document.getElementById("actions");
+let count = document.getElementById("count");
 
 const usernameContainer = document.getElementById("username-container");
 const chatContainer = document.getElementById("chat-container");
@@ -30,7 +31,7 @@ const showChatContainerOnEnter = (e) => {
 };
 
 const showUserOnline = () => {
-  userOnline.innerHTML = `<span class="bg-slate-900 rounded-full p-2">Online</span>`;
+  userOnline.innerHTML = `<span>Users online</span>`;
 };
 showUserOnline();
 username.addEventListener("input", showUserOnline);
@@ -57,7 +58,7 @@ const showChatContainerOnClick = (e) => {
 buttonSend.addEventListener("click", sendMessage);
 buttonShow.addEventListener("click", showChatContainerOnClick);
 
-message.addEventListener("input", (e) => {
+message.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
     sendMessage(e);
@@ -74,7 +75,7 @@ socket.on("message", (data) => {
       : "text-right text-rose-400";
   let messageAlignment =
     data.username === username.value ? "table" : "table ml-auto";
-  output.innerHTML += `<p class="${messageClass}"><span class="${messageAlignment}">${data.username}: ${data.message}</span></p>`;
+  output.innerHTML += `<p class="${messageClass}"><span class="${messageAlignment} bg-slate-700 rounded-md p-2 my-1">${data.username}:<br/>${data.message}</span></p>`;
   output.scrollTop = output.scrollHeight;
 });
 
@@ -90,4 +91,7 @@ socket.on("typing", (data) => {
   actions.innerHTML = `<p class="text-cyan-500">${data.username} is typing...</p>`;
 });
 
+socket.on("count", (data) => {
+ count.innerHTML = data;
+})
 document.addEventListener("keydown", showChatContainerOnEnter);
