@@ -12,34 +12,36 @@
     @import url("https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css");
   </style>
 </head>
-<body class="bg-indigo-400 min-h-screen flex flex-col justify-center items-center font-lato">
+<body class="bg-primary flex flex-col justify-center items-center font-lato">
   <div class="mt-5">
     <form id="username-container" class="flex flex-col justify-center w-full max-w-xs mx-auto border p-5 rounded bg-white">
       <div>
-        <h3 class="text-3xl text-center text-indigo-500 uppercase p-5">Join Us!</h3>
+        <h3 class="text-4xl font-bold text-center text-third uppercase p-5">Join Us!</h3>
+        <span class="uppercase font-bold">Chat with other students online</span>
         <img src="https://cdn.dribbble.com/users/2155177/screenshots/14219981/media/9f037bf6271282e8a190c9ac97aac83a.png?compress=1&resize=400x300&vertical=center" alt="chat"/>
       </div>
-      <input type="text" id="username" placeholder="Write your nickname..." class="border-b border-indigo-500 outline-none bg-transparent p-3 focus:border-blue-500 text-gray-500" />
-      <button type="button" id="button-show" class="bg-indigo-500 rounded-md text-center text-blue-50 my-5 p-2 w-full mx-auto">JOIN CHATROOM</button>
+      <input type="text" id="username" placeholder="Write your nickname..." class="border-b border-primary text-center outline-none bg-transparent p-3 focus:border-blue-500 text-gray-500" />
+      <button type="button" id="button-show" class="bg-secondary bg-opacity-100 rounded-md text-center text-violet-300 my-5 p-2 w-full mx-auto">JOIN CHATROOM</button>
     </form>
   </div>
 
   <div id="chat-container" class="mt-5 hidden w-full">
     <form class="flex flex-col justify-center w-full max-w-md mx-auto border p-2 rounded bg-white">
-      <div class="bg-slate-900 rounded-md p-2 flex justify-end ">
-        <div id="userOnline" class="font-bold text-lime-400 ml-1 my-2 uppercase"></div>{""}
+      <div class="bg-secondary rounded-md p-2 flex justify-end ">
+        <div id="userOnline" class="font-bold text-lime-400 mr-2 my-2 uppercase"></div>
         <div id="count" class="font-bold text-lime-400 my-2 mr-2 "></div>
       </div>
-      <div id="chat-win" class="border p-3 bg-slate-900 w-full rounded-md">
+      <div id="chat-win" class="border p-3 bg-secondary w-full rounded-md">
         <div id="output" class="h-80 overflow-auto"></div>
         <div id="actions"></div>  
       </div>
       <div class="flex my-2">
         <input type="text" id="message" placeholder="Write your message..." class="border-b border-indigo-500 outline-none bg-transparent p-3 focus:border-blue-500  text-gray-500 flex-grow" />
-        <button type="button" id="button-send" class="bg-indigo-500   text-center uppercase text-blue-50 my-5 p-2 rounded-full">
-          <svg class="h-8 w-8 text-white"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="7 7 12 12 7 17" />  <polyline points="13 7 18 12 13 17" /></svg>
+        <button type="button" id="button-send" class="bg-secondary   text-center uppercase my-5 p-2 rounded-full">
+          <svg class="h-8 w-8 text-primary"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="7 7 12 12 7 17" />  <polyline points="13 7 18 12 13 17" /></svg>
         </button>
       </div>
+
     </form>
     
   </div>

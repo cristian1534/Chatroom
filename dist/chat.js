@@ -9,10 +9,11 @@ let output = document.getElementById("output");
 let actions = document.getElementById("actions");
 let count = document.getElementById("count");
 
+
 const usernameContainer = document.getElementById("username-container");
 const chatContainer = document.getElementById("chat-container");
 
-let hasJoined = false; // Variable para controlar si el evento "joined" se ha ejecutado
+let hasJoined = false; 
 
 const showChatContainer = (e) => {
   e.preventDefault();
@@ -72,10 +73,10 @@ socket.on("message", (data) => {
   let messageClass =
     data.username === username.value
       ? "text-left text-lime-400"
-      : "text-right text-rose-400";
+      : "text-right text-rose-300";
   let messageAlignment =
     data.username === username.value ? "table" : "table ml-auto";
-  output.innerHTML += `<p class="${messageClass}"><span class="${messageAlignment} bg-slate-700 rounded-md p-2 my-1">${data.username}:<br/>${data.message}</span></p>`;
+  output.innerHTML += `<p class="${messageClass}"><span class="${messageAlignment} bg-slate-600 rounded-md p-2 my-1">${data.username}:<br/>${data.message}</span></p>`;
   output.scrollTop = output.scrollHeight;
 });
 
@@ -94,4 +95,5 @@ socket.on("typing", (data) => {
 socket.on("count", (data) => {
  count.innerHTML = data;
 })
+
 document.addEventListener("keydown", showChatContainerOnEnter);
