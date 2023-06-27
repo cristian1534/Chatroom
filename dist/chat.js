@@ -32,7 +32,7 @@ const showChatContainerOnEnter = (e) => {
 };
 
 const showUserOnline = () => {
-  userOnline.innerHTML = `<span>Users online</span>`;
+  userOnline.innerHTML = `<span>Students online</span>`;
 };
 showUserOnline();
 username.addEventListener("input", showUserOnline);

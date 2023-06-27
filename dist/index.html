@@ -13,6 +13,7 @@
   </style>
 </head>
 <body class="bg-primary flex flex-col justify-center items-center font-lato h-screen">
+
   <div class="mt-5">
     <form id="username-container" class="flex flex-col justify-center w-full max-w-xs mx-auto border p-5 rounded bg-white">
       <div>
@@ -21,11 +22,11 @@
         <img src="https://cdn.dribbble.com/users/2155177/screenshots/14219981/media/9f037bf6271282e8a190c9ac97aac83a.png?compress=1&resize=400x300&vertical=center" alt="chat"/>
       </div>
       <input type="text" id="username" placeholder="Write your nickname..." class="border-b border-primary text-center outline-none bg-transparent p-3 focus:border-blue-500 text-gray-500" />
-      <button type="button" id="button-show" class="bg-secondary bg-opacity-100 rounded-md text-center text-violet-300 my-5 p-2 w-full mx-auto">JOIN CHATROOM</button>
+      <button type="button" id="button-show" class="bg-secondary bg-opacity-100 rounded-md text-center text-violet-300 my-5 p-2 w-full mx-auto ">JOIN CHATROOM</button>
     </form>
   </div>
 
-  <div id="chat-container" class="mt-5 hidden w-full">
+  <div id="chat-container" class="mt-5 hidden w-full flex">
     <form class="flex flex-col justify-center w-full max-w-md mx-auto border p-2 rounded bg-white">
       <div class="bg-secondary rounded-md p-2 flex justify-end ">
         <div id="userOnline" class="font-bold text-lime-400 mr-2 my-2 uppercase"></div>
@@ -41,9 +42,8 @@
           <svg class="h-8 w-8 text-primary"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="7 7 12 12 7 17" />  <polyline points="13 7 18 12 13 17" /></svg>
         </button>
       </div>
-
+      
     </form>
-    
   </div>
   <script src="/socket.io/socket.io.js" charset="UTF-8"></script>
   <script src="chat.js" charset="UTF-8"></script>
